@@ -1,0 +1,11 @@
+val phase1 : unit (* nom du fichier Ã  lire passÃ© en argument *)
+             -> ( string * (* source *)
+                    string * (* puit *)
+                      (string * string) list (* couloirs *)
+                )
+  
+val phase2 : unit (* nom du fichier Ã  lire passÃ© en argument *)
+             -> ( string * (* source *)
+                    string * (* puit *)
+                      (string * string*int) list (* couloirs avec capacitÃ© *)
+                )
