@@ -1,4 +1,3 @@
-
 let write_out lst =
   let filename = Sys.argv.(1) in
   let out_filename =
@@ -12,15 +11,12 @@ let write_out lst =
   close_out oc
 ;;
 
+module G = Graph.Make(String);;
 
-module GString = Graph.Make(String);;
+let (src,dst,edg) = Analyse.phase1 ()
 
-let data = Analyse.phase1 ();;
+let graph = G.create_graph_non_ponderer edg 
 
-let (src,dst,edg) = data ;;
+let shortest_path = G.floyd_warshall_paths graph src dst 
 
-let graph = GString.create_graph_non_ponderer edg ;;
-
-let min_way = GString.floyd_warshall_paths graph src dst
-
-let _ = write_out min_way ;;
+let _ = write_out shortest_path

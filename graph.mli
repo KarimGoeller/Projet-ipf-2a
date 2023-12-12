@@ -27,6 +27,8 @@
       * @raises Rien
       *)
      val compare : t -> t -> int
+
+     (*val to_string : t -> string*)
      
  
  end
@@ -154,7 +156,7 @@
       * @ensures Renvoie un graphe correspondant à la liste d'arête donnée en paramètre
       * @raises Rien
       *)
-      val create_graph_ponderer : (node*node*int*int) list -> graph
+      val create_graph_ponderer : (node*node*int) list -> graph
 
       val create_graph_non_ponderer : (node*node) list -> graph
 
@@ -165,8 +167,21 @@
      val create_residual_graph : graph -> graph 
   
      val build_level_graph : graph -> node -> graph
+     
+     val find_blocking_flow : graph -> (node list) -> int 
 
-     val print_graph : graph -> unit
+     val update_graph : graph -> node list -> int -> graph  
+
+     val dinic : graph -> node -> node -> graph 
+
+     val max_flow : graph ->  node -> int 
+
+     val nb_edg_with_flow : graph -> int
+
+     val creat_edg_list : graph -> (node * node * int) list
+  
+    (*val print_graph : graph -> unit*)
+
  
 end
  

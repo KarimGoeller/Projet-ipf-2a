@@ -1,4 +1,4 @@
-all: phase1 test_phase2
+all: phase1 phase2
 .PHONY: all
 
 # Création des .cmi
@@ -20,7 +20,7 @@ analyse.cmo: analyse.ml analyse.cmi
 phase1.cmo: phase1.ml graph.cmo analyse.cmo
 	ocamlc -o $@ -c $<
 
-test_phase2.cmo: test_phase2.ml graph.cmo analyse.cmo
+phase2.cmo: phase2.ml graph.cmo analyse.cmo
 	ocamlc -o $@ -c $<
 
 # Création des exécutables
@@ -28,7 +28,7 @@ test_phase2.cmo: test_phase2.ml graph.cmo analyse.cmo
 phase1: graph.cmo analyse.cmo phase1.cmo
 	ocamlc -o $@ $^
 
-test_phase2: graph.cmo analyse.cmo test_phase2.cmo
+phase2: graph.cmo analyse.cmo phase2.cmo
 	ocamlc -o $@ $^
 
 # Autre
@@ -37,5 +37,5 @@ clean:
 	rm -f *.cmi
 	rm -f *.cmo
 	rm -f phase1
-	rm -f test_phase2
+	rm -f phase2
 	rm -f *_out*
