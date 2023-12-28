@@ -27,8 +27,8 @@
       * @raises Rien
       *)
      val compare : t -> t -> int
-
-     (*val to_string : t -> string*)
+(*
+     val to_string : t -> string*)
      
  
  end
@@ -152,35 +152,84 @@
       val fold_edge : (node -> node -> (int * int) -> 'a -> 'a) -> graph -> 'a -> 'a
   
      (**
-      * @requires Rien
-      * @ensures Renvoie un graphe correspondant à la liste d'arête donnée en paramètre
-      * @raises Rien
-      *)
-      val create_graph_ponderer : (node*node*int) list -> graph
+ * @requires Rien
+ * @ensures Crée un graphe pondéré à partir d'une liste d'arêtes. Chaque arête est un triplet (node1, node2, poids).
+ * @raises Rien
+ *)
+val create_graph_ponderer : (node*node*int) list -> graph
 
-      val create_graph_non_ponderer : (node*node) list -> graph
+(**
+ * @requires Rien
+ * @ensures Crée un graphe non pondéré à partir d'une liste d'arêtes. Chaque arête est un couple (node1, node2).
+ * @raises Rien
+ *)
+val create_graph_non_ponderer : (node*node) list -> graph
 
-    
+(**
+ * @requires rien
+ * @ensures Trouve tous les plus courts chemins entre deux sommets (source et destination) dans un graphe.
+ * @raises NoWay
+ *)
+val shortest_path : graph -> node -> node -> (node list) list
 
-     val floyd_warshall_paths : graph -> node -> node -> (node list) list
+(**
+ * @requires Rien
+ * @ensures Crée un graphe résiduel à partir d'un graphe donné, utilisé dans les calculs de flux réseau.
+ * @raises Rien
+ *)
+val create_residual_graph : graph -> graph 
 
-     val create_residual_graph : graph -> graph 
+(**
+ * @requires Rien
+ * @ensures Construit un graphe de niveau à partir d'un graphe résiduel, utilisé dans l'algorithme de Dinic.
+ * @raises Rien
+ *)
+val build_level_graph : graph -> node -> graph
+
+(**
+ * @requires Un graphe et un chemin dans ce graphe.
+ * @ensures Trouve le flux maximal (bloquant) qui peut être envoyé à travers un chemin donné dans le graphe.
+ * @raises Rien
+ *)
+val find_blocking_flow : graph -> (node list) -> int 
+
+(**
+ * @requires Un graphe, un chemin dans ce graphe, et un flux à ajouter à ce chemin.
+ * @ensures Met à jour le graphe avec le nouveau flux le long du chemin spécifié.
+ * @raises Rien
+ *)
+val update_graph : graph -> node list -> int -> graph  
+
+(**
+ * @requires Un graphe, un sommet source et un sommet puits.
+ * @ensures Applique l'algorithme de Dinic pour trouver le flux maximal du sommet source au sommet puits.
+ * @raises Rien
+ *)
+val dinic : graph -> node -> node -> graph 
+
+(**
+ * @requires Un graphe et un sommet source.
+ * @ensures Calcule le flux maximal sortant du sommet source dans le graphe.
+ * @raises Rien
+ *)
+val max_flow : graph ->  node -> int 
+
+(**
+ * @requires Un graphe.
+ * @ensures Compte le nombre d'arêtes dans le graphe ayant un flux non nul.
+ * @raises Rien
+ *)
+val nb_edg_with_flow : graph -> int
+
+(**
+ * @requires Un graphe.
+ * @ensures Crée une liste des arêtes avec leur flux dans le graphe.
+ * @raises Rien
+ *)
+val creat_edg_list : graph -> (node * node * int) list
+
   
-     val build_level_graph : graph -> node -> graph
-     
-     val find_blocking_flow : graph -> (node list) -> int 
-
-     val update_graph : graph -> node list -> int -> graph  
-
-     val dinic : graph -> node -> node -> graph 
-
-     val max_flow : graph ->  node -> int 
-
-     val nb_edg_with_flow : graph -> int
-
-     val creat_edg_list : graph -> (node * node * int) list
-  
-    (*val print_graph : graph -> unit*)
+(*    val print_graph : graph -> unit*)
 
  
 end

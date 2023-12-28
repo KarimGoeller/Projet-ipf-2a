@@ -17,6 +17,6 @@ let (src,dst,edg) = Analyse.phase1 ()
 
 let graph = G.create_graph_non_ponderer edg 
 
-let shortest_path = G.floyd_warshall_paths graph src dst 
+let shortest_path = G.shortest_path graph src dst 
 
 let _ = write_out shortest_path
