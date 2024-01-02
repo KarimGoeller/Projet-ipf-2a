@@ -9,7 +9,7 @@
  exception EmptyMap
  
  (**
-  * @brief Un module type ordonnée
+  * @brief Un module type ordonné
   *)
  module type OrderedType =
  sig
@@ -162,7 +162,7 @@
 
     (**
      * @requires Rien
-     * @ensures Crée un graphe non pondéré(c'est un graphe pondéré mais avec toute les pondérations nul) à partir d'une liste d'arêtes. Chaque arête est un couple (node1, node2).
+     * @ensures Crée un graphe non pondéré(c'est un graphe pondéré mais avec toutes les pondérations nul) à partir d'une liste d'arêtes. Chaque arête est un couple (node1, node2).
      * @raises Rien
      *)
     val create_graph_non_ponderer : (node*node) list -> graph
