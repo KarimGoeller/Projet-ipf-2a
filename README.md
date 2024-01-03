@@ -3,14 +3,14 @@ Ce projet est organisé en plusieurs phases, chacune ayant son propre ensemble d
 Phase 1
 Le code de la Phase 1 se trouve dans deux fichiers principaux :
 
-graph.ml (Lignes 150 à 179) : Cette section du fichier graph.ml contient la fonction principale de la Phase 1 du projet.
+graph.ml (Lignes 231 à 275) : Cette section du fichier graph.ml contient la fonction principale de la Phase 1 du projet.
 
 phase1.ml : Ce fichier contient les utilisations pratiques de notre fonction.
 
 Phase 2
 Le code de la Phase 2 est également réparti sur deux fichiers principaux :
 
-graph.ml (Lignes 181 à 334) : Cette partie du fichier graph.ml correspond à l'implémentation de l'algorithme de Dinic.
+graph.ml (Lignes 277 à 477) : Cette partie du fichier graph.ml correspond à l'implémentation de l'algorithme de Dinic.
 
 phase2.ml : Ce fichier contient les utilisations pratiques de l'algorithme codé précédemment.
 

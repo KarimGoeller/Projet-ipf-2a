@@ -270,7 +270,11 @@ let shortest_path graph source destination =
             ) neighbors rest in
             bfs new_queue new_visited paths shortest_path_length
   in
-  bfs [(source, [])] NodeSet.empty [] max_int  (* Initialisation de la BFS avec la source *)
+  let all_path = bfs [(source, [])] NodeSet.empty [] max_int in   (* Initialisation de la BFS avec la source *)
+  if all_path = [] then 
+    raise NoWay
+  else
+    all_path 
 
   (**********Fin du code spécifique à la phase 1*******************)
 
@@ -451,7 +455,7 @@ let update_residual_graph residual_graph path flow =
       let level_graph = build_level_graph residual_graph src in 
   
       (* Trouve le plus court chemin dans le graphe de niveau *)
-      let all_path = shortest_path level_graph src dst in 
+      let all_path = try shortest_path level_graph src dst with NoWay -> [] in 
   
       match all_path with
       | [] -> graph  (* Si aucun chemin n'est trouvé, renvoie le graphe actuel *)
