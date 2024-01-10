@@ -1,8 +1,13 @@
 (* Utilisation d'un module de graphe paramétré pour des nœuds de type String *)
 module G = Graph.Make(String);;
 
-(* Définition d'une fonction pour écrire les résultats dans un fichier *)
-let write_out graph src dst =
+(**
+ * @requires un graphe et la source des flux
+ * @ensures Crée un fichier où sur la première lignee on a le flow total qui transite, en deuxième ligne 
+   le nombre d'arrete impliqué et en dernier tout la liste de toute  les arrete avec leur pondérations
+ * @raises Rien
+ *)
+let write_out graph src =
   (* Création du nom de fichier de sortie basé sur le nom de fichier d'entrée *)
   let filename = Sys.argv.(1) in
   let out_filename =
@@ -37,4 +42,4 @@ let graph = G.create_graph_ponderer edg
 let graph_with_max_flow = G.dinic graph src dst
 
 (* Écriture des résultats dans un fichier de sortie *)
-let _ = write_out graph_with_max_flow src dst
+let _ = write_out graph_with_max_flow src

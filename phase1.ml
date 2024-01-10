@@ -1,4 +1,8 @@
-(* Définition d'une fonction pour écrire les résultats dans un fichier *)
+(**
+ * @requires une liste de chemin
+ * @ensures Crée un fichier où les chemins sont affiché sur chaque ligne
+ * @raises Rien
+ *)
 let write_out lst =
   (* Récupération du nom de fichier d'entrée depuis les arguments du programme *)
   let filename = Sys.argv.(1) in

@@ -82,7 +82,7 @@
      (**
       * @requires Le deuxième paramètre, un graphe, contient le premier paramètre, un sommet, et le graphe est non vide
       * @ensures Renvoie l'ensemble des successeurs d'un sommet (premier paramètre) dans un graphe (deuxième paramètre)
-      * @raises Rien
+      * @raises Not_found
       *)
     val succs_Set : node -> graph -> NodeSet.t
 
@@ -90,7 +90,7 @@
     (**
       * @requires Le deuxième paramètre, un graphe, contient le premier paramètre, un sommet, et le graphe est non vide
       * @ensures Renvoie la map des successeurs d'un sommet (premier paramètre) dans un graphe (deuxième paramètre)
-      * @raises Rien
+      * @raises Not_found
       *)
     val succs_Map : node -> graph -> (int * int) NodeMap.t
  
@@ -168,23 +168,23 @@
     val create_graph_non_ponderer : (node*node) list -> graph
 
     (**
-     * @requires rien
+     * @requires Un graphe et deux sommet se trouvent dans ce graphe
      * @ensures Trouve tous les plus courts chemins entre deux sommets (source et destination) dans un graphe.
      * @raises NoWay
      *)
     val shortest_path : graph -> node -> node -> (node list) list
 
     (**
-     * @requires Rien
+     * @requires un graphe
      * @ensures Crée un graphe résiduel à partir d'un graphe donné, utilisé dans les calculs de flux réseau.
      * @raises Rien
      *)
     val create_residual_graph : graph -> graph 
 
     (**
-    * @requires Rien
+    * @requires un graphe résiduel et un sommet source 
     * @ensures Construit un graphe de niveau à partir d'un graphe résiduel, utilisé dans l'algorithme de Dinic.
-    * @raises Rien
+    * @raises Not_found
     *)
     val build_level_graph : graph -> node -> graph
 

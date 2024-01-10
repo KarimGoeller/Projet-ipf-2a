@@ -66,7 +66,7 @@ struct
 (**
  * @requires Le deuxième paramètre, un graphe, contient le premier paramètre, un sommet, et le graphe est non vide
  * @ensures Renvoie l'ensemble des successeurs d'un sommet (premier paramètre) dans un graphe (deuxième paramètre)
- * @raises Rien
+ * @raises Not_found
  *)
   let succs_Set vertex graph = 
     (*on place toutes les clefs (donc les successeurs) dans un Set*)
@@ -76,7 +76,7 @@ struct
     (**
       * @requires Le deuxième paramètre, un graphe, contient le premier paramètre, un sommet, et le graphe est non vide
       * @ensures Renvoie la map des successeurs d'un sommet (premier paramètre) dans un graphe (deuxième paramètre)
-      * @raises Rien
+      * @raises Not_found
       *)
   let succs_Map vertex graph = 
     (*on récupère la map de tous les successeurs de vertex*)
@@ -232,7 +232,7 @@ struct
 
 
     (**
-     * @requires rien
+     * @requires Un graphe et deux sommet se trouvent dans ce graphe
      * @ensures Trouve tous les plus courts chemins entre deux sommets (source et destination) dans un graphe.
      * @raises NoWay
      *)
@@ -282,7 +282,7 @@ let shortest_path graph source destination =
 
 
     (**
-     * @requires Rien
+     * @requires un graphe
      * @ensures Crée un graphe résiduel à partir d'un graphe donné, utilisé dans les calculs de flux réseau.
      * @raises Rien
      *)
@@ -311,9 +311,9 @@ let shortest_path graph source destination =
 
 
     (**
-    * @requires Rien
+    * @requires un graphe résiduel et un sommet source 
     * @ensures Construit un graphe de niveau à partir d'un graphe résiduel, utilisé dans l'algorithme de Dinic.
-    * @raises Rien
+    * @raises Not_found
     *)
   let build_level_graph residual_graph src =
     (* Initialisation de la carte des niveaux avec des valeurs par défaut -1 *)
